@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	virtualsms "github.com/virtualsms-io/go-sdk"
+	virtualsms "github.com/virtualsms-io/virtualsms-go-sdk"
 )
 
 func main() {

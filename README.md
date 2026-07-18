@@ -1,15 +1,15 @@
 # virtualsms-go
 
-The official, native Go client for the [VirtualSMS](https://virtualsms.io) REST API v1 — SMS
+The official, native Go client for the [VirtualSMS](https://virtualsms.io) REST API v1 -  SMS
 verification numbers, number rentals, and residential/mobile/datacenter proxies, all in one SDK.
 
-This is a **REST v1-native client**. It talks directly to `https://virtualsms.io/api/v1/*` — it is
+This is a **REST v1-native client**. It talks directly to `https://virtualsms.io/api/v1/*` -  it is
 not a wrapper around any legacy or third-party client library.
 
 ## Install
 
 ```bash
-go get github.com/virtualsms-io/go-sdk
+go get github.com/virtualsms-io/virtualsms-go-sdk
 ```
 
 ## Quickstart
@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"log"
 
-	virtualsms "github.com/virtualsms-io/go-sdk"
+	virtualsms "github.com/virtualsms-io/virtualsms-go-sdk"
 )
 
 func main() {
@@ -45,12 +45,12 @@ func main() {
 	if result.Success {
 		fmt.Println("Code:", result.Code)
 	} else {
-		fmt.Println("No SMS yet — retry WaitForSMS, or CancelOrder for a refund.")
+		fmt.Println("No SMS yet -  retry WaitForSMS, or CancelOrder for a refund.")
 	}
 }
 ```
 
-More flows: see [`examples/`](./examples) — activation, rental, and proxy.
+More flows: see [`examples/`](./examples) -  activation, rental, and proxy.
 
 ## What's covered
 
@@ -69,9 +69,9 @@ spec](https://virtualsms.io):
 
 ### Rentals: two tiers
 
-- **Full Access** (`virtualsms.RentalTierFullAccess`) — local SIM inventory, usable for any
+- **Full Access** (`virtualsms.RentalTierFullAccess`) -  local SIM inventory, usable for any
   service, longer durations, optional auto-renew.
-- **Platform** (`virtualsms.RentalTierPlatform`) — sourced via our global supplier network, locked
+- **Platform** (`virtualsms.RentalTierPlatform`) -  sourced via our global supplier network, locked
   to one chosen service per number, 24/72/168h durations only.
 
 Both tiers carry the same refund terms: full refund within 20 minutes of purchase and before the
@@ -101,7 +101,7 @@ case err != nil:
 	if errors.As(err, &se) && se.IsRetryable() {
 		// safe to retry (GET only)
 	}
-	// otherwise: a 5xx on a mutating call may have gone through server-side —
+	// otherwise: a 5xx on a mutating call may have gone through server-side - 
 	// verify with a list/get call (ListOrders, GetOrder, ListRentals, ...)
 	// before retrying, since you may have been charged.
 }
@@ -109,7 +109,7 @@ case err != nil:
 
 The client also applies a bounded retry (3 attempts, exponential backoff) to **GET-only** requests
 on network errors or 5xx responses. Mutating calls (create/cancel/swap/rotate/extend/...) are never
-auto-retried — a 5xx there does not prove the operation failed.
+auto-retried -  a 5xx there does not prove the operation failed.
 
 ## Options
 
@@ -124,7 +124,7 @@ client := virtualsms.New(
 
 ## Publishing
 
-Publishing this SDK is a **git tag only** — there is no CI publish workflow and no package-registry
+Publishing this SDK is a **git tag only** -  there is no CI publish workflow and no package-registry
 account/token needed. [pkg.go.dev](https://pkg.go.dev) auto-indexes any public, tagged Go module on
 first request. To cut a new version:
 
@@ -133,13 +133,13 @@ git tag v2.0.0
 git push origin v2.0.0
 ```
 
-Then visit `https://pkg.go.dev/github.com/virtualsms-io/go-sdk@v2.0.0` once (or wait for the first
+Then visit `https://pkg.go.dev/github.com/virtualsms-io/virtualsms-go-sdk@v2.0.0` once (or wait for the first
 `go get`) to trigger indexing.
 
 ## Versioning
 
 **v2.0.0** is the first REST v1-native major release. It is a breaking change from any v1.x line
-that may have wrapped a legacy activation-dispatcher API — v2 talks to `/api/v1/*` REST endpoints
+that may have wrapped a legacy activation-dispatcher API -  v2 talks to `/api/v1/*` REST endpoints
 directly.
 
 ## License
