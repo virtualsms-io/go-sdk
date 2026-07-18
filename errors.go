@@ -17,10 +17,19 @@ var (
 	// too low to complete the requested purchase.
 	ErrInsufficientBalance = errors.New("insufficient balance")
 
-	// ErrNoNumbers is returned on HTTP 404: the requested resource (order,
-	// rental, proxy, or a service+country combo with no available numbers)
-	// was not found / not in stock.
-	ErrNoNumbers = errors.New("not found / no numbers available")
+	// ErrNotFound is returned on HTTP 404: the requested resource (order,
+	// rental, proxy, or webhook id) does not exist.
+	ErrNotFound = errors.New("not found")
+
+	// ErrNoNumbers is returned when the backend has no numbers/stock
+	// available. The backend has no distinct status code for this today
+	// (confirmed gap -- see SDK spec "Error model"): a 503 with a body
+	// containing "out of stock" / "no numbers" is otherwise
+	// indistinguishable from any other 5xx. This SDK sniffs the message
+	// body to synthesize this sentinel client-side. [UNVERIFIED -- backend
+	// enhancement needed: a distinct status/code, e.g. 409, would let SDKs
+	// drop this sniff.]
+	ErrNoNumbers = errors.New("no numbers available")
 
 	// ErrRateLimited is returned on HTTP 429. Never auto-retried by this
 	// SDK — fighting the server's own rate limiter is wrong. Back off and

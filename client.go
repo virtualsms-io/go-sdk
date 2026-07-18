@@ -281,12 +281,16 @@ func mapStatusError(status int, respBody []byte, mutating bool) error {
 		if msg == "" {
 			msg = "resource not found"
 		}
-		return &APIError{StatusCode: status, Message: msg, sentinel: ErrNoNumbers}
+		return &APIError{StatusCode: status, Message: msg, sentinel: ErrNotFound}
 	case http.StatusTooManyRequests:
 		return &APIError{StatusCode: status, Message: "rate limit exceeded, please slow down requests", sentinel: ErrRateLimited}
 	}
 
 	if status >= 500 {
+		lowerMessage := strings.ToLower(message)
+		if strings.Contains(lowerMessage, "out of stock") || strings.Contains(lowerMessage, "no numbers") {
+			return &APIError{StatusCode: status, Message: "no numbers currently available: " + message, sentinel: ErrNoNumbers}
+		}
 		return &ServerError{StatusCode: status, Message: message, Mutating: mutating}
 	}
 

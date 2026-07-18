@@ -237,7 +237,7 @@ func (c *VirtualSMS) GenerateProxyEndpoint(ctx context.Context, params GenerateP
 		}
 	}
 	if proxy == nil {
-		return nil, &APIError{StatusCode: 404, Message: fmt.Sprintf("proxy %s does not exist on this account", params.ProxyID), sentinel: ErrNoNumbers}
+		return nil, &APIError{StatusCode: 404, Message: fmt.Sprintf("proxy %s does not exist on this account", params.ProxyID), sentinel: ErrNotFound}
 	}
 
 	targetBy := params.TargetBy

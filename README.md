@@ -79,7 +79,7 @@ first SMS.
 
 ## Errors
 
-Every failed call returns an error wrapping one of four sentinel values, so you can branch with
+Every failed call returns an error wrapping one of five sentinel values, so you can branch with
 `errors.Is`:
 
 ```go
@@ -89,8 +89,11 @@ case errors.Is(err, virtualsms.ErrBadKey):
 	// invalid/missing API key
 case errors.Is(err, virtualsms.ErrInsufficientBalance):
 	// top up before retrying
+case errors.Is(err, virtualsms.ErrNotFound):
+	// order/rental/proxy/webhook id does not exist
 case errors.Is(err, virtualsms.ErrNoNumbers):
-	// resource not found / no stock
+	// no numbers/stock available for this service+country (sniffed from a
+	// 503 body -- the backend has no distinct status code for this yet)
 case errors.Is(err, virtualsms.ErrRateLimited):
 	// back off, never auto-retry
 case err != nil:
