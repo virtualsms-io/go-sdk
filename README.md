@@ -22,7 +22,8 @@ go get github.com/virtualsms-io/go-sdk/v2
 
 ## Quickstart
 
-1. **Get an API key** at [virtualsms.io/dashboard](https://virtualsms.io/dashboard).
+<!-- TODO: re-point to /dashboard once the frontend migration ships -->
+1. **Get an API key** at [virtualsms.io](https://virtualsms.io).
 2. **Buy a number** and **wait for the code**:
 
 ```go
