@@ -1,7 +1,6 @@
-// Package virtualsms is the official native Go client for the VirtualSMS
-// REST API v1 (https://virtualsms.io). It covers SMS verification number
-// purchases, number and proxy rentals, residential/mobile/datacenter proxy
-// management, account/balance introspection, and webhook subscriptions.
+// Package virtualsms is the official Go client for the VirtualSMS REST API (https://virtualsms.io).
+// It provides SMS verification, number rentals, and matching-country proxies backed by real
+// carrier-issued mobile numbers, not VoIP, across 2500+ services in 145+ countries.
 //
 // This is a REST v1-native client: it talks directly to
 // https://virtualsms.io/api/v1/*. It is NOT a drop-in replacement for any
@@ -33,6 +32,6 @@
 //
 // # Homepage
 //
-// https://virtualsms.io — dashboard, API key management, and full REST v1
+// https://virtualsms.io: dashboard, API key management, and full REST v1
 // reference documentation live there.
 package virtualsms
