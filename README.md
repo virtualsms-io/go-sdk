@@ -9,7 +9,7 @@ not a wrapper around any legacy or third-party client library.
 ## Install
 
 ```bash
-go get github.com/virtualsms-io/virtualsms-go-sdk
+go get github.com/virtualsms-io/go-sdk
 ```
 
 ## Quickstart
@@ -25,7 +25,7 @@ import (
 	"fmt"
 	"log"
 
-	virtualsms "github.com/virtualsms-io/virtualsms-go-sdk"
+	virtualsms "github.com/virtualsms-io/go-sdk"
 )
 
 func main() {
@@ -133,7 +133,7 @@ git tag v2.0.0
 git push origin v2.0.0
 ```
 
-Then visit `https://pkg.go.dev/github.com/virtualsms-io/virtualsms-go-sdk@v2.0.0` once (or wait for the first
+Then visit `https://pkg.go.dev/github.com/virtualsms-io/go-sdk@v2.0.0` once (or wait for the first
 `go get`) to trigger indexing.
 
 ## Versioning
